@@ -2,7 +2,7 @@
 
 namespace Jecovier\ResponseMacros;
 
-use Jecovier\ResponseMacros\Exceptions\CustomHandler;
+use Jecovier\ResponseMacros\Exceptions\ApiResponseHandler;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,7 +19,7 @@ class ResponseMacrosServiceProvider extends ServiceProvider
 
         $this->app->bind(
             ExceptionHandler::class,
-            CustomHandler::class
+            ApiResponseHandler::class
         );
     }
 
