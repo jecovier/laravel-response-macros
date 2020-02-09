@@ -52,7 +52,7 @@ Since this is a fork from the original laravel-response-macros package, the best
         }
     ],
     "require": {
-        "jecovier/laravel-response-macros": "dev-bugfix"
+        "jecovier/laravel-response-macros": "^1.0.8"
     }
 }
 ```
