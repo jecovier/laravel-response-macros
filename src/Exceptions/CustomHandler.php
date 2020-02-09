@@ -5,7 +5,6 @@ namespace Jecovier\ResponseMacros\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CustomHandler extends ExceptionHandler
 {
@@ -45,20 +44,12 @@ class CustomHandler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        $status = method_exists($exception, 'getStatusCode')
-            ? $exception->getStatusCode()
-            : $exception->getCode();
-
         if ($request->expectsJson()) {
             return response()->error(
                 $exception->getMessage(),
-                $status,
-                getenv('APP_DEBUG') == 'true' ? $exception : null
+                $this->getStatus($exception),
+                $this->getErrors($exception)
             );
-        }
-
-        if ($exception instanceof NotFoundHttpException) {
-            return response()->view('errors.404', [], 404);
         }
         return parent::render($request, $exception);
     }
@@ -73,8 +64,41 @@ class CustomHandler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
-            return response()->error('Unauthenticated.', 401);
+            return response()->error(
+                'Unauthenticated.',
+                401,
+                getenv('APP_DEBUG') == 'true' ? $exception : null
+            );
         }
-        return redirect()->guest('login');
+        return parent::unauthenticated($request, $exception);
+    }
+
+    /**
+     * Get the status code of the Exception
+     * 
+     * @param  \Exception  $exception
+     * @return Mixed
+     */
+    private function getStatus(Exception $exception)
+    {
+        return method_exists($exception, 'getStatusCode')
+            ? $exception->getStatusCode()
+            : $exception->getCode();
+    }
+
+    /**
+     * Get the errors bag of the Exception, if no errors is and the APP_DEBUG is
+     * true, the $exception itself is returned
+     * 
+     * @param  \Exception  $exception
+     * @return Array
+     */
+    private function getErrors(Exception $exception)
+    {
+        if (!empty($exception->errors))
+            return $exception->errors;
+        if (getenv('APP_DEBUG') == 'true')
+            return $exception;
+        return null;
     }
 }
