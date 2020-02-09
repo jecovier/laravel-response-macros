@@ -125,6 +125,22 @@ Result
 
 With the Http `Status Code: 200`
 
+## Auto Format all exceptions
+
+If you want to format all Api request Exceptions automatically, open your handler file (app/Exceptions/Handler) and set the \$formatApiResponse protected variable to true:
+
+```php
+class Handler extends ExceptionHandler
+{
+    protected $formatApiResponse = true;
+    .
+    .
+    .
+}
+```
+
+Now, if the request expects a Json and there is an Exception, the response would be converted automatically to an error response object.
+
 ## Testing
 
 ```bash
