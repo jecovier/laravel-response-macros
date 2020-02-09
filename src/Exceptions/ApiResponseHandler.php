@@ -24,6 +24,7 @@ class ApiResponseHandler extends ExceptionHandler
         ) {
             return parent::render($request, $exception);
         }
+
         return response()->error(
             $exception->getMessage(),
             $this->getStatus($exception),
@@ -41,17 +42,19 @@ class ApiResponseHandler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if (
-            $request->expectsJson()
-            && !empty($this->formatApiResponse)
-            && $this->formatApiResponse
+            !$request->expectsJson()
+            || empty($this->formatApiResponse)
+            || !$this->formatApiResponse
         ) {
-            return response()->error(
-                'Unauthenticated.',
-                401,
-                getenv('APP_DEBUG') == 'true' ? $exception : null
-            );
+
+            return parent::unauthenticated($request, $exception);
         }
-        return parent::unauthenticated($request, $exception);
+
+        return response()->error(
+            'Unauthenticated.',
+            401,
+            getenv('APP_DEBUG') == 'true' ? $exception : null
+        );
     }
 
     /**
