@@ -1,6 +1,6 @@
 <?php
 
-namespace Jecovier\Exceptions;
+namespace Jecovier\ResponseMacros\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

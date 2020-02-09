@@ -2,7 +2,7 @@
 
 namespace Jecovier\ResponseMacros;
 
-use Jecovier\Exceptions\CustomHandler;
+use Jecovier\ResponseMacros\Exceptions\CustomHandler;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 
