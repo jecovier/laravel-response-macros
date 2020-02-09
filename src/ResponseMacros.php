@@ -1,6 +1,6 @@
 <?php
 
-namespace Appstract\ResponseMacros;
+namespace Jecovier\ResponseMacros;
 
 use Illuminate\Contracts\Routing\ResponseFactory;
 

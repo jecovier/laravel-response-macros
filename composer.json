@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Appstract\\ResponseMacros\\": "src"
+            "Jecovier\\ResponseMacros\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Appstract\\ResponseMacros\\Test\\": "tests"
+            "Jecovier\\ResponseMacros\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -52,7 +52,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Appstract\\ResponseMacros\\ResponseMacrosServiceProvider"
+                "Jecovier\\ResponseMacros\\ResponseMacrosServiceProvider"
             ]
         }
     }

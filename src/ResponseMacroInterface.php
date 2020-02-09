@@ -1,6 +1,6 @@
 <?php
 
-namespace Appstract\ResponseMacros;
+namespace Jecovier\ResponseMacros;
 
 interface ResponseMacroInterface
 {

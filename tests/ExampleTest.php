@@ -1,6 +1,6 @@
 <?php
 
-namespace Appstract\ResponseMacros\Test;
+namespace Jecovier\ResponseMacros\Test;
 
 class ExampleTest extends \PHPUnit_Framework_TestCase
 {

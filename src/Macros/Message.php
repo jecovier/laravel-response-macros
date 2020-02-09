@@ -1,8 +1,8 @@
 <?php
 
-namespace Appstract\ResponseMacros\Macros;
+namespace Jecovier\ResponseMacros\Macros;
 
-use Appstract\ResponseMacros\ResponseMacroInterface;
+use Jecovier\ResponseMacros\ResponseMacroInterface;
 
 class Message implements ResponseMacroInterface
 {

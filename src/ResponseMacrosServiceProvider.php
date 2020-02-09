@@ -1,6 +1,6 @@
 <?php
 
-namespace Appstract\ResponseMacros;
+namespace Jecovier\ResponseMacros;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -21,6 +21,6 @@ class ResponseMacrosServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Appstract\ResponseMacros\ResponseMacros');
+        $this->app->make('Jecovier\ResponseMacros\ResponseMacros');
     }
 }
