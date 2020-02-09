@@ -4,7 +4,7 @@ namespace Jecovier\ResponseMacros\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Exceptions\Handler as ExceptionHandler;
 
 class CustomHandler extends ExceptionHandler
 {
