@@ -1,3 +1,35 @@
+# FORK
+
+this is a fork from https://github.com/appstract/laravel-response-macros, I change the output format to replicate the fractal standard, plus a message property:
+
+### Success response
+
+```json
+{
+    "success": true,
+    "status": 200,
+    "message": "congratulations!",
+    "data": {
+        // Some response object
+    },
+    "error": null
+}
+```
+
+### Error response
+
+```json
+{
+    "success": false,
+    "status": 500,
+    "message": "Bad request!",
+    "data": null,
+    "error": {
+        // Some response object
+    }
+}
+```
+
 # Laravel Response Macros
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/appstract/laravel-response-macros.svg?style=flat-square)](https://packagist.org/packages/appstract/laravel-response-macros)
@@ -11,65 +43,75 @@ This package is a collection of custom response macros that you can re-use in a 
 
 You can install the package via composer:
 
-``` bash
+```bash
 composer require appstract/laravel-response-macros
 ```
 
 ## Usage
 
 ### Message
-``` php
+
+```php
 return response()->message('hello world!', 200);
 ```
 
 Result
 
-``` json
+```json
 {
     "message": "hello world!"
 }
 ```
+
 With the Http `Status Code: 200`
 
 ### Error
-``` php
-return response()->error('Something went wrong', $statuscode = 400);
+
+```php
+return response()->error('Something went wrong', $statuscode = 400, $errorObject = null);
 ```
 
 Result
 
-``` json
+```json
 {
-    "message": "Something went wrong"
+    "success": false,
+    "status": 400,
+    "message": "Something went wrong",
+    "data": null,
+    "error": {
+        // Some error object or null
+    }
 }
 ```
+
 With the Http `Status Code: 400`
 
 ### Success
-``` php
-return response()->success(['some' => 'data'], $statuscode = 200);
+
+```php
+return response()->success('congratulations!', ['some' => 'data'], $statuscode = 200);
 ```
 
 Result
 
-``` json
+```json
 {
-    "data": {"some": "data"}
+    "success": true,
+    "status": 200,
+    "message": "congratulations!",
+    "data": {
+        "some": "data"
+    },
+    "error": null
 }
 ```
+
 With the Http `Status Code: 200`
-
-### PDF
-
-Creates a (downloadable) PDF response from PDF contents.
-
-``` php
-return response()->pdf($pdfData, 'filename.pdf', $download = false);
-```
 
 ## Testing
 
-``` bash
+```bash
 $ composer test
 ```
 

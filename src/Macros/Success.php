@@ -14,7 +14,7 @@ class Success implements ResponseMacroInterface
                 "status" => $status,
                 "success" => true,
                 "data" => $data,
-                'errors' => null,
+                "errors" => null,
             ], $status);
         });
     }

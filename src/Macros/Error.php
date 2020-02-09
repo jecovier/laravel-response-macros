@@ -14,7 +14,7 @@ class Error implements ResponseMacroInterface
                 "status" => $status,
                 "success" => false,
                 "data" => null,
-                'errors' => $errors,
+                "errors" => $errors,
             ], $status);
         });
     }
