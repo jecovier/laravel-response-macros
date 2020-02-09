@@ -1,9 +1,24 @@
 {
-    "name": "appstract/laravel-response-macros",
+    "name": "jecovier/laravel-response-macros",
     "description": "Extra Response Macro's for Laravel",
-    "keywords": ["appstract", "laravel", "response", "macros", "php"],
+    "keywords": [
+        "jecovier",
+        "fractal",
+        "api",
+        "appstract",
+        "laravel",
+        "response",
+        "macros",
+        "php"
+    ],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Jose Espinoza Conforme",
+            "email": "jecovier@gmail.com",
+            "homepage": "https://github.com/jecovier",
+            "role": "Developer"
+        },
         {
             "name": "Bob Krijnen",
             "email": "hello@appstract.team",
