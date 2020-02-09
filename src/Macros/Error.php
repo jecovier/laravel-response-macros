@@ -8,11 +8,13 @@ class Error implements ResponseMacroInterface
 {
     public function run($factory)
     {
-        $factory->macro('error', function ($message = 'Bad Request', $status = 400) use ($factory) {
+        $factory->macro('error', function (string $message = 'Bad Request', $status = 400, $errors = []) use ($factory) {
             return $factory->make([
-                'errors' => [
-                    'message' => $message,
-                ],
+                "message" => $message,
+                "status" => $status,
+                "success" => false,
+                "data" => null,
+                'errors' => $errors,
             ], $status);
         });
     }
