@@ -22,7 +22,6 @@ class ResponseMacros
             Macros\Message::class,
             Macros\Success::class,
             Macros\Error::class,
-            Macros\Pdf::class,
         ];
 
         $this->bindMacros($factory);
