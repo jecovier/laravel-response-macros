@@ -41,10 +41,26 @@ This package is a collection of custom response macros that you can re-use in a 
 
 ## Installation
 
-You can install the package via composer:
+Since this is a fork from the original laravel-response-macros package, the best way to install it is using the VCS repositories feature. Add the following lines to your composer.json file:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jecovier/laravel-response-macros"
+        }
+    ],
+    "require": {
+        "jecovier/laravel-response-macros": "dev-bugfix"
+    }
+}
+```
+
+and run:
 
 ```bash
-composer require appstract/laravel-response-macros
+composer install
 ```
 
 ## Usage
