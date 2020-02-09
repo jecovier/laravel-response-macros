@@ -2,6 +2,8 @@
 
 namespace Jecovier\ResponseMacros;
 
+use Jecovier\Exceptions\CustomHandler;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 
 class ResponseMacrosServiceProvider extends ServiceProvider
@@ -14,6 +16,11 @@ class ResponseMacrosServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             //
         }
+
+        $this->app->bind(
+            ExceptionHandler::class,
+            CustomHandler::class
+        );
     }
 
     /**
